@@ -13,6 +13,8 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 //React Router
 import { useLocation } from "react-router-dom";
 
+import { MainContext } from "../Provider/MainProvider";
+
 const useStyles = makeStyles(() => ({
   header: {
     backgroundColor: "#000000",
@@ -27,22 +29,34 @@ const useStyles = makeStyles(() => ({
 export default function Header() {
   const classes = useStyles();
   const location = useLocation();
-  console.log(location.pathname);
+  const { username } = React.useContext(MainContext);
 
   return (
     <AppBar position="static" className={classes.header}>
       <CssBaseline />
       <Toolbar className={classes.toolbar}>
         <GitHubIcon />
-        <Typography variant="h6" style={{ marginLeft: "15px" }}>
+        <Typography variant="h6" style={styles.headerTitle}>
           Github Repository Search
         </Typography>
-        {location.pathname !== "/" ? (
-          <Typography variant="h6" style={{ marginLeft: "15px" }}>
-            Hi
-          </Typography>
-        ) : null}
+        <div style={styles.headerUserTitle}>
+          {location.pathname !== "/" ? (
+            <Typography variant="subtitle1">{`Hi, ${username}`}</Typography>
+          ) : null}
+        </div>
       </Toolbar>
     </AppBar>
   );
 }
+
+const styles = {
+  headerTitle: {
+    marginLeft: "15px",
+    whiteSpace: "nowrap",
+  },
+  headerUserTitle: {
+    display: "flex",
+    width: "100vw",
+    justifyContent: "flex-end",
+  },
+};
