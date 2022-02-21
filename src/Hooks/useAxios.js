@@ -15,10 +15,14 @@ export const useGetUserRepos = ({ githubUser }) => {
   const fetchData = () => {
     setloading(true);
     axios
-      .get(`${baseURL}/${githubUser}/repos`)
+      .get(`${baseURL}/${githubUser}/repos`, {
+        params: {
+          per_page: 10,
+        },
+      })
       .then((res) => {
         setRepo(res.data);
-        setUsername(githubUser.toLowerCase());
+        setUsername(githubUser);
         setError(false);
         setIsValid(true);
       })
@@ -32,4 +36,36 @@ export const useGetUserRepos = ({ githubUser }) => {
   };
 
   return { error, loading, errMessage, isValid, fetchData };
+};
+
+//Implementing
+export const useGetMoreData = () => {
+  const { setRepo } = useContext(MainContext);
+  const [error, setError] = useState(false);
+  const [loading, setloading] = useState(false);
+  const [errMessage, setErrMessage] = useState("");
+  const [pageNum, setPageNum] = useState(2);
+
+  const fetchMoreData = () => {
+    setloading(true);
+    axios
+      .get(`${baseURL}/${githubUser}/repos`, {
+        params: {
+          per_page: 10,
+          page: pageNum,
+        },
+      })
+      .then((res) => {
+        setRepo(res.data);
+        setError(false);
+        setPageNum(pageNum + 1);
+      })
+      .catch((e) => {
+        setErrMessage(e);
+        setError(true);
+      })
+      .finally(() => {
+        setloading(false);
+      });
+  };
 };

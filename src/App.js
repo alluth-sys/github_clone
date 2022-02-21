@@ -15,7 +15,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" exact element={<Home />} showUser={false} />
-        <Route path="/users" exact element={<Repo />} showUser={true} />
+        <Route path="/users/:username/repos" exact element={<Repo />} />
       </Routes>
     </Router>
   );
