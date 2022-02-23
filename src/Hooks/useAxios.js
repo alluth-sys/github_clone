@@ -38,34 +38,32 @@ export const useGetUserRepos = ({ githubUser }) => {
   return { error, loading, errMessage, isValid, fetchData };
 };
 
-//Implementing
-export const useGetMoreData = () => {
-  const { setRepo } = useContext(MainContext);
-  const [error, setError] = useState(false);
-  const [loading, setloading] = useState(false);
-  const [errMessage, setErrMessage] = useState("");
-  const [pageNum, setPageNum] = useState(2);
+export const useLoadMoreRepos = () => {
+  const { repo, username, setRepo } = useContext(MainContext);
+  const [hasMore, setHasMore] = useState(true);
+  const [pageNum, setPageNum] = useState(2); // first 10 was fetch during first render
 
-  const fetchMoreData = () => {
-    setloading(true);
-    axios
-      .get(`${baseURL}/${githubUser}/repos`, {
-        params: {
-          per_page: 10,
-          page: pageNum,
-        },
-      })
-      .then((res) => {
-        setRepo(res.data);
-        setError(false);
+  const fetchRepos = async () => {
+    const response = await axios.get(`${baseURL}/${username}/repos`, {
+      params: {
+        per_page: 10,
+        page: pageNum,
+      },
+    });
+
+    // if status is OK
+    if (response.status === 200) {
+      if (response.data.length !== 0) {
+        const newRepos = [...repo, ...response.data];
         setPageNum(pageNum + 1);
-      })
-      .catch((e) => {
-        setErrMessage(e);
-        setError(true);
-      })
-      .finally(() => {
-        setloading(false);
-      });
-  };
+        setRepo(newRepos);
+
+        //console.log(newRepos);
+      } else {
+        setHasMore(false);
+      }
+    }
+  }; //TODO: Error Handling / Network timeout
+
+  return { hasMore, fetchRepos };
 };

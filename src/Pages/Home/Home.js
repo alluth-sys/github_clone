@@ -8,7 +8,6 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
 import Spacer from "react-spacer";
 import ClipLoader from "react-spinners/ClipLoader";
-import { css } from "@emotion/react";
 
 import { useGetUserRepos } from "../../Hooks/useAxios";
 import { MainContext } from "../../Provider/MainProvider";

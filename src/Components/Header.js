@@ -12,6 +12,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 //React Router
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { MainContext } from "../Provider/MainProvider";
 
@@ -29,13 +30,20 @@ const useStyles = makeStyles(() => ({
 export default function Header() {
   const classes = useStyles();
   const location = useLocation();
-  const { username } = React.useContext(MainContext);
+  const { username, setUsername } = React.useContext(MainContext);
+
+  let navigate = useNavigate();
 
   return (
     <AppBar position="static" className={classes.header}>
       <CssBaseline />
       <Toolbar className={classes.toolbar}>
-        <GitHubIcon />
+        <GitHubIcon
+          onClick={() => {
+            setUsername("");
+            navigate("/");
+          }}
+        />
         <Typography variant="h6" style={styles.headerTitle}>
           Github Repository Search
         </Typography>
