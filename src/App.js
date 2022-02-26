@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -14,8 +15,13 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" exact element={<Home />} showUser={false} />
+        <Route path="/" exact element={<Home />} />
         <Route path="/users/:username/repos" exact element={<Repo />} />
+        <Route
+          path="/users/:username/repos/:reposName"
+          exact
+          element={<RepoDetail />}
+        />
       </Routes>
     </Router>
   );

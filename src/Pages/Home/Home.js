@@ -83,12 +83,10 @@ export default function Home() {
 
 const styles = {
   container: {
-    //border: "3px solid red",
     height: "100vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    //flexDirection: "column",
   },
   inner: {
     display: "flex",
@@ -101,7 +99,7 @@ const styles = {
     paddingTop: "35px",
     paddingBottom: "35px",
     borderRadius: "20px",
-    width: "40%",
+    width: "35%",
   },
   textFieldStyle: {
     width: "100%",

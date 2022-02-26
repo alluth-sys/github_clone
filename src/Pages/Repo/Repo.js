@@ -1,7 +1,6 @@
 import React from "react";
 import { MainContext } from "../../Provider/MainProvider";
 import { Navigate } from "react-router-dom";
-import axios from "axios";
 import InfiniteScroll from "react-infinite-scroller";
 import Spacer from "react-spacer";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -66,6 +65,8 @@ const styles = {
     display: "flex",
     height: "100%",
     paddingTop: "50px",
+    paddingLeft: "10%",
+    paddingRight: "10%",
   },
   inner: {
     width: "50%",

@@ -6,6 +6,7 @@ export default function MainProvider({ children }) {
   const [username, setUsername] = React.useState("");
   const [repo, setRepo] = React.useState(null);
   const [isAuthed, setIsAuthed] = React.useState(false);
+  const [selectedRepo, setSeletedRepo] = React.useState(null);
 
   return (
     <MainContext.Provider
@@ -16,6 +17,8 @@ export default function MainProvider({ children }) {
         setRepo,
         isAuthed,
         setIsAuthed,
+        selectedRepo,
+        setSeletedRepo,
       }}
     >
       {children}
