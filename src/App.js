@@ -10,22 +10,25 @@ import RepoDetail from "./Pages/RepoDetail/RepoDetail";
 //Header
 import Header from "./Components/Header";
 
-//
+//Responsive Web Design
+import { BreakpointProvider } from "react-socks";
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/users/:username/repos" exact element={<Repo />} />
-        <Route
-          path="/users/:username/repos/:reposName"
-          exact
-          element={<RepoDetail />}
-        />
-      </Routes>
-    </Router>
+    <BreakpointProvider>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route path="/users/:username/repos" exact element={<Repo />} />
+          <Route
+            path="/users/:username/repos/:reposName"
+            exact
+            element={<RepoDetail />}
+          />
+        </Routes>
+      </Router>
+    </BreakpointProvider>
   );
 }
 
