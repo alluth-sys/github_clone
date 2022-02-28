@@ -1,4 +1,5 @@
-# How to run project
+# About Project
+## How to run on local machine
 1. Clone project to local
 2. Change directory (cd) to the folder of the project
 3. run `npm install` to get all the dependencies needed
