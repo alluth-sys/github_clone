@@ -28,6 +28,7 @@ const useStyles = makeStyles(() => ({
     top: 0,
     left: 0,
     zIndex: 2,
+    width: "100%",
   },
   toolbar: {
     display: "flex",
@@ -42,7 +43,7 @@ export default function Header() {
   let navigate = useNavigate();
 
   return (
-    <React.Fragment>
+    <div>
       <Breakpoint large up>
         <AppBar position="static" className={classes.header}>
           <CssBaseline />
@@ -85,7 +86,7 @@ export default function Header() {
           </Toolbar>
         </AppBar>
       </Breakpoint>
-    </React.Fragment>
+    </div>
   );
 }
 

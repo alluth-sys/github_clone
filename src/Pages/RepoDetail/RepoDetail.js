@@ -44,8 +44,8 @@ export default function RepoDetail() {
             <div style={styles.titleStyle}>
               <RepoIcon size={30} />
               <Spacer width={"5px"} />
-              <Typography variant="h5" gutterBottom component="div">
-                {repoData.full_name}
+              <Typography variant="h5" gutterBottom component="div" noWrap>
+                {repoData ? repoData.full_name.split("/").pop() : null}
               </Typography>
             </div>
             <div style={styles.titleStyle}>
@@ -105,6 +105,7 @@ const styles = {
   contentContainer: {
     padding: "50px",
     height: "100vh",
+    width: "100vw",
   },
   titleStyle: {
     display: "flex",
