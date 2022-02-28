@@ -25,7 +25,7 @@ export default function Home() {
   let navigate = useNavigate();
   React.useEffect(() => {
     if (isValid) {
-      navigate(`/users/${githubUser}/repos`);
+      navigate(`/users/${githubUser}/repos`, { replace: true });
       setIsAuthed(true);
     }
   }, [isValid, navigate]);
