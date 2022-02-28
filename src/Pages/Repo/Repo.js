@@ -8,6 +8,9 @@ import RepoCard from "../../Components/RepoCard";
 
 import { useLoadMoreRepos } from "../../Hooks/useAxios";
 
+//React Socks Breakpoint
+import { Breakpoint } from "react-socks";
+
 export default function Repo() {
   const { repo, isAuthed } = React.useContext(MainContext);
   const { hasMore, fetchRepos } = useLoadMoreRepos();
@@ -25,36 +28,52 @@ export default function Repo() {
           </div>
         }
       >
-        <div style={styles.container}>
-          <div style={styles.inner}>
-            {repo.map((item, index) => {
-              if (index % 2 === 0) {
+        <Breakpoint large up>
+          <div style={styles.container}>
+            <div style={styles.inner}>
+              {repo.map((item, index) => {
+                if (index % 2 === 0) {
+                  return (
+                    <div key={item.id}>
+                      <RepoCard item={item} id={item.id} />
+                      <Spacer height={"20px"} />
+                    </div>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </div>
+            <div style={styles.inner}>
+              {repo.map((item, index) => {
+                if (index % 2 === 1) {
+                  return (
+                    <div key={item.id}>
+                      <RepoCard item={item} id={item.id} />
+                      <Spacer height={"20px"} />
+                    </div>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </div>
+          </div>
+        </Breakpoint>
+        <Breakpoint medium down>
+          <div style={styles.container}>
+            <div style={styles.moblieInner}>
+              {repo.map((item) => {
                 return (
                   <div key={item.id}>
                     <RepoCard item={item} id={item.id} />
                     <Spacer height={"20px"} />
                   </div>
                 );
-              } else {
-                return null;
-              }
-            })}
+              })}
+            </div>
           </div>
-          <div style={styles.inner}>
-            {repo.map((item, index) => {
-              if (index % 2 === 1) {
-                return (
-                  <div key={item.id}>
-                    <RepoCard item={item} id={item.id} />
-                    <Spacer height={"20px"} />
-                  </div>
-                );
-              } else {
-                return null;
-              }
-            })}
-          </div>
-        </div>
+        </Breakpoint>
       </InfiniteScroll>
     );
   }
@@ -79,5 +98,12 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  moblieInner: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
   },
 };

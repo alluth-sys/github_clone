@@ -10,6 +10,9 @@ import {
 //Github Icons
 import GitHubIcon from "@mui/icons-material/GitHub";
 
+//React Socks Breakpoint
+import { Breakpoint } from "react-socks";
+
 //React Router
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -39,25 +42,50 @@ export default function Header() {
   let navigate = useNavigate();
 
   return (
-    <AppBar position="static" className={classes.header}>
-      <CssBaseline />
-      <Toolbar className={classes.toolbar}>
-        <GitHubIcon
-          onClick={() => {
-            setUsername("");
-            navigate("/");
-          }}
-        />
-        <Typography variant="h6" style={styles.headerTitle}>
-          Github Repository Search
-        </Typography>
-        <div style={styles.headerUserTitle}>
-          {location.pathname !== "/" ? (
-            <Typography variant="subtitle1">{`Hi, ${username}`}</Typography>
-          ) : null}
-        </div>
-      </Toolbar>
-    </AppBar>
+    <React.Fragment>
+      <Breakpoint large up>
+        <AppBar position="static" className={classes.header}>
+          <CssBaseline />
+          <Toolbar className={classes.toolbar}>
+            <GitHubIcon
+              onClick={() => {
+                setUsername("");
+                navigate("/");
+              }}
+            />
+            <Typography variant="h6" style={styles.headerTitle}>
+              Github Repository Search
+            </Typography>
+            <div style={styles.headerUserTitle}>
+              {location.pathname !== "/" ? (
+                <Typography variant="subtitle1">{`Hi, ${username}`}</Typography>
+              ) : null}
+            </div>
+          </Toolbar>
+        </AppBar>
+      </Breakpoint>
+      <Breakpoint medium down>
+        <AppBar position="static" className={classes.header}>
+          <CssBaseline />
+          <Toolbar className={classes.toolbar}>
+            <GitHubIcon
+              onClick={() => {
+                setUsername("");
+                navigate("/");
+              }}
+            />
+            <Typography variant="subtitle1" style={styles.headerTitle}>
+              Github Repository Search
+            </Typography>
+            <div style={styles.headerUserTitle}>
+              {location.pathname !== "/" ? (
+                <Typography variant="subtitle2">{`Hi, ${username}`}</Typography>
+              ) : null}
+            </div>
+          </Toolbar>
+        </AppBar>
+      </Breakpoint>
+    </React.Fragment>
   );
 }
 

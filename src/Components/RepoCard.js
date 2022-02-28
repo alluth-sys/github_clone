@@ -11,6 +11,9 @@ import { MainContext } from "../Provider/MainProvider";
 
 import Spacer from "react-spacer";
 
+//React Socks Breakpoint
+import { Breakpoint } from "react-socks";
+
 import { useNavigate } from "react-router-dom";
 //Icon
 import {
@@ -64,20 +67,40 @@ export default function RepoCard({ item, id }) {
   );
 
   return (
-    <Card
-      variant="outlined"
-      sx={{
-        bgcolor: "background.paper",
-        borderRadius: 5,
-        width: 400,
-        maxHeight: 400,
-        border: "1px solid #AAAAAA",
-        overflow: "hidden",
-      }}
-      onClick={onClickHandler}
-    >
-      {card}
-    </Card>
+    <React.Fragment>
+      <Breakpoint large up>
+        <Card
+          variant="outlined"
+          sx={{
+            bgcolor: "background.paper",
+            borderRadius: 5,
+            width: 400,
+            maxHeight: 400,
+            border: "1px solid #AAAAAA",
+            overflow: "hidden",
+          }}
+          onClick={onClickHandler}
+        >
+          {card}
+        </Card>
+      </Breakpoint>
+      <Breakpoint small down>
+        <Card
+          variant="outlined"
+          sx={{
+            bgcolor: "background.paper",
+            borderRadius: 5,
+            width: 300,
+            maxHeight: 300,
+            border: "1px solid #AAAAAA",
+            overflow: "hidden",
+          }}
+          onClick={onClickHandler}
+        >
+          {card}
+        </Card>
+      </Breakpoint>
+    </React.Fragment>
   );
 }
 
