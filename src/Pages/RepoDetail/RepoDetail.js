@@ -44,7 +44,7 @@ export default function RepoDetail() {
             <div style={styles.titleStyle}>
               <RepoIcon size={30} />
               <Spacer width={"5px"} />
-              <Typography variant="h5" gutterBottom component="div" noWrap>
+              <Typography variant="h5" gutterBottom component="div">
                 {repoData.full_name}
               </Typography>
             </div>
