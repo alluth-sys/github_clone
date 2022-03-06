@@ -1,0 +1,45 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  border-radius: 20px;
+}
+
+.large-inner {
+  composes: inner;
+  width: 30vw;
+}
+
+.medium-inner {
+  composes: inner;
+  width: 60vw;
+}
+
+.small-inner {
+  composes: inner;
+  width: 90vw;
+}
+
+.button {
+  width: 130px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.textFieldStyle {
+  width: 100%;
+}

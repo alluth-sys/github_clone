@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  height: 100%;
+  padding-top: 50px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.mobile-inner {
+  composes: inner;
+  width: 100%;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

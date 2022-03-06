@@ -15,6 +15,9 @@ import { MainContext } from "../../Provider/MainProvider";
 //React Socks Breakpoint
 import { Breakpoint } from "react-socks";
 
+//CSS
+import styles from "./Home.module.css";
+
 export default function Home() {
   const [githubUser, setGithubUser] = React.useState("");
   const { loading, error, isValid, fetchData } = useGetUserRepos({
@@ -31,9 +34,9 @@ export default function Home() {
   }, [isValid, navigate]);
 
   return (
-    <div style={styles.container}>
+    <div className={styles.container}>
       <Breakpoint large up>
-        <div style={styles.inner}>
+        <div className={styles["large-inner"]}>
           <TextField
             error={error}
             label="Username"
@@ -46,12 +49,12 @@ export default function Home() {
             helperText={
               error ? "User not found" : "Please enter your Github username"
             }
-            style={styles.textFieldStyle}
+            className={styles.textFieldStyle}
           />
           <Spacer height={"30px"} />
 
           <div style={{ display: "flex" }}>
-            <div style={styles.buttonStyle}>
+            <div className={styles.button}>
               {!loading ? (
                 <Button
                   variant="contained"
@@ -66,7 +69,7 @@ export default function Home() {
             </div>
 
             <Spacer width={"30px"} />
-            <div style={styles.buttonStyle}>
+            <div className={styles.button}>
               <Button
                 variant="contained"
                 style={{ backgroundColor: "orange" }}
@@ -83,7 +86,7 @@ export default function Home() {
       </Breakpoint>
 
       <Breakpoint medium only>
-        <div style={styles.tabletInner}>
+        <div className={styles["medium-inner"]}>
           <TextField
             error={error}
             label="Username"
@@ -96,12 +99,12 @@ export default function Home() {
             helperText={
               error ? "User not found" : "Please enter your Github username"
             }
-            style={styles.tabletTextFieldStyle}
+            className={styles.textFieldStyle}
           />
           <Spacer height={"30px"} />
 
           <div style={{ display: "flex" }}>
-            <div style={styles.tabletButtonStyle}>
+            <div className={styles.button}>
               {!loading ? (
                 <Button
                   variant="contained"
@@ -116,7 +119,7 @@ export default function Home() {
             </div>
 
             <Spacer width={"30px"} />
-            <div style={styles.tabletButtonStyle}>
+            <div className={styles.button}>
               <Button
                 variant="contained"
                 style={{ backgroundColor: "orange" }}
@@ -132,7 +135,7 @@ export default function Home() {
         </div>
       </Breakpoint>
       <Breakpoint small down>
-        <div style={styles.mobileInner}>
+        <div className={styles["small-inner"]}>
           <TextField
             error={error}
             label="Username"
@@ -145,12 +148,12 @@ export default function Home() {
             helperText={
               error ? "User not found" : "Please enter your Github username"
             }
-            style={styles.mobileTextFieldStyle}
+            className={styles.textFieldStyle}
           />
           <Spacer height={"30px"} />
 
           <div style={{ display: "flex" }}>
-            <div style={styles.mobileButtonStyle}>
+            <div className={styles.button}>
               {!loading ? (
                 <Button
                   variant="contained"
@@ -165,7 +168,7 @@ export default function Home() {
             </div>
 
             <Spacer width={"30px"} />
-            <div style={styles.mobileButtonStyle}>
+            <div className={styles.button}>
               <Button
                 variant="contained"
                 style={{ backgroundColor: "orange" }}
@@ -183,81 +186,3 @@ export default function Home() {
     </div>
   );
 }
-
-const styles = {
-  container: {
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  inner: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    border: "3px solid #AAAAAA",
-    paddingLeft: "50px",
-    paddingRight: "50px",
-    paddingTop: "35px",
-    paddingBottom: "35px",
-    borderRadius: "20px",
-    width: "30vw",
-  },
-  textFieldStyle: {
-    width: "100%",
-  },
-  buttonStyle: {
-    width: "130px",
-    height: "45px",
-    justifyContent: "center",
-    alignItems: "center",
-    display: "flex",
-  },
-  mobileInner: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    border: "3px solid #AAAAAA",
-    paddingLeft: "50px",
-    paddingRight: "50px",
-    paddingTop: "35px",
-    paddingBottom: "35px",
-    borderRadius: "20px",
-    width: "90vw",
-  },
-  mobileTextFieldStyle: {
-    width: "100%",
-  },
-  mobileButtonStyle: {
-    width: "130px",
-    height: "45px",
-    justifyContent: "center",
-    alignItems: "center",
-    display: "flex",
-  },
-  tabletInner: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    border: "3px solid #AAAAAA",
-    paddingLeft: "50px",
-    paddingRight: "50px",
-    paddingTop: "35px",
-    paddingBottom: "35px",
-    borderRadius: "20px",
-    width: "60vw",
-  },
-  tabletTextFieldStyle: {
-    width: "100%",
-  },
-  tabletButtonStyle: {
-    width: "130px",
-    height: "45px",
-    justifyContent: "center",
-    alignItems: "center",
-    display: "flex",
-  },
-};

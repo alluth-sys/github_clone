@@ -11,6 +11,9 @@ import { useLoadMoreRepos } from "../../Hooks/useAxios";
 //React Socks Breakpoint
 import { Breakpoint } from "react-socks";
 
+//CSS
+import styles from "./Repo.module.css";
+
 export default function Repo() {
   const { repo, isAuthed } = React.useContext(MainContext);
   const { hasMore, fetchRepos } = useLoadMoreRepos();
@@ -23,14 +26,14 @@ export default function Repo() {
         loadMore={fetchRepos}
         hasMore={hasMore}
         loader={
-          <div style={styles.loaderStyle} key={0}>
+          <div className={styles.loader} key={0}>
             <ClipLoader size={50} />
           </div>
         }
       >
         <Breakpoint large up>
-          <div style={styles.container}>
-            <div style={styles.inner}>
+          <div className={styles.container}>
+            <div className={styles.inner}>
               {repo.map((item, index) => {
                 if (index % 2 === 0) {
                   return (
@@ -44,7 +47,7 @@ export default function Repo() {
                 }
               })}
             </div>
-            <div style={styles.inner}>
+            <div className={styles.inner}>
               {repo.map((item, index) => {
                 if (index % 2 === 1) {
                   return (
@@ -61,8 +64,8 @@ export default function Repo() {
           </div>
         </Breakpoint>
         <Breakpoint medium down>
-          <div style={styles.container}>
-            <div style={styles.moblieInner}>
+          <div className={styles.container}>
+            <div className={styles["mobile-inner"]}>
               {repo.map((item) => {
                 return (
                   <div key={item.id}>
@@ -79,31 +82,31 @@ export default function Repo() {
   }
 }
 
-const styles = {
-  container: {
-    display: "flex",
-    height: "100%",
-    paddingTop: "50px",
-    paddingLeft: "10%",
-    paddingRight: "10%",
-  },
-  inner: {
-    width: "50%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-  },
-  loaderStyle: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  moblieInner: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-  },
-};
+// const styles = {
+//   container: {
+//     display: "flex",
+//     height: "100%",
+//     paddingTop: "50px",
+//     paddingLeft: "10%",
+//     paddingRight: "10%",
+//   },
+//   inner: {
+//     width: "50%",
+//     display: "flex",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     flexDirection: "column",
+//   },
+//   loaderStyle: {
+//     display: "flex",
+//     justifyContent: "center",
+//     alignItems: "center",
+//   },
+//   moblieInner: {
+//     width: "100%",
+//     display: "flex",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     flexDirection: "column",
+//   },
+// };
